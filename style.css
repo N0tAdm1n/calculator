@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button {
+    height: 50px;
+    width: 40px;
+}
+
+#calculator {
+    border: 3px solid black;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: rgb(238, 248, 250);
+}
+
+#display {
+    border: 2px solid rgb(29, 48, 33);
+    background-color: rgb(104, 190, 122);
+}
