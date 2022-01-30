@@ -13,8 +13,9 @@ body {
 }
 
 button {
-    height: 50px;
-    width: 40px;
+    height: 80px;
+    width: 70px;
+    font-size: larger;
 }
 
 #calculator {
@@ -23,9 +24,17 @@ button {
     height: fit-content;
     padding: 10px;
     background-color: rgb(238, 248, 250);
+    border-radius: 10px;
 }
 
 #display {
     border: 2px solid rgb(29, 48, 33);
+    border-radius: 5px;
+    padding: 5px;
     background-color: rgb(104, 190, 122);
+    display: flex;
+    flex-direction: row-reverse;
+    height: 80px;
+    align-items: flex-end;
+    font-size: xx-large;
 }
