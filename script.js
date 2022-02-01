@@ -1,5 +1,5 @@
-let firstOperand = null;
-let secondOperand = null;
+let currentOperand = null;
+let prevOperand = null;
 let currentOperator = null;
 
 function add(a, b) {
@@ -32,13 +32,9 @@ function operate(a, b, operator) {
 }
 // function to display to the screen
 function displayToScreen() {
-  display.textContent += this.textContent;
+  display.textContent += this.textContent.toString(); 
 }
 
-// function to clear the screen
-function clearDisplay() {
-  display.textContent = "";
-}
 
 const digits = document.querySelectorAll(".digit");
 digits.forEach((digit) => digit.addEventListener("click", displayToScreen));
@@ -46,31 +42,24 @@ digits.forEach((digit) => digit.addEventListener("click", displayToScreen));
 const display = document.querySelector("#display");
 
 const clear = document.querySelector("#clear");
+// function to clear the screen
+function clearDisplay() {
+  display.textContent = "";
+}
+
 clear.addEventListener("click", () => {
-  firstOperand = null;
+  currentOperand = null;
+  currentOperator = null;
   clearDisplay();
 });
 
-// function clickOperator() {
-//   if (firstOperand === null) {
-//     firstOperand = Number(display.textContent);
-//   } else if (secondOperand === null) {
-//     secondOperand = Number(display.textContent);
-//   } else {
-//     // firstOperand = secondOperand;
-//     secondOperand = Number(display.textContent);
-//   }
-//   if (this.textContent !== "=") currentOperator = this.textContent;
-//   clearDisplay();
-// }
-
 // function runs when an operator is pressed
 function clickOperator() {
-  firstOperand = Number(display.textContent);
-
   currentOperator = this.textContent;
+  currentOperand = Number(display.textContent);
 
   clearDisplay();
+
 }
 
 const operators = document.querySelectorAll(".operator");
@@ -78,11 +67,12 @@ operators.forEach((operator) => operator.addEventListener("click", clickOperator
 // function to display result
 function displayResult() {
   display.textContent = `${operate(
-    firstOperand,
+    currentOperand,
     Number(display.textContent),
     currentOperator
   )}`;
-  firstOperand = Number(display.textContent);
+  currentOperand = Number(display.textContent);
 }
+
 const equalBtn = document.querySelector(".equal");
 equalBtn.addEventListener("click", displayResult);
