@@ -23,7 +23,7 @@ function clearAll() {
 }
 //function for backspace
 function clearOne() {
-  currentDisplay.textContent = currentDisplay.textContent.slice(0,-1);
+  currentDisplay.textContent = currentDisplay.textContent.slice(0,-1);  
 }
 //function to display numbers
 function updateDisplay() {
