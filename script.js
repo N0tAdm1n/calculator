@@ -47,9 +47,18 @@ const prevDisplay = document.querySelector("#prevDisplay");
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
 const clearBtn = document.querySelector("#clear");
+const equalBtn = document.querySelector('.equal') 
 
 clearBtn.addEventListener("click", clearAll);
 digits.forEach((digit) => digit.addEventListener("click", updateDisplay));
 operators.forEach((operator) =>
   operator.addEventListener("click", clickOperator)
 );
+equalBtn.addEventListener('click', () => {
+  if(prevDisplay.textContent !== '' && currentDisplay.textContent !== '' && currentOperator!== null ) {
+    prevOperand = parseFloat(prevDisplay.textContent);
+    currentOperand = parseFloat(currentDisplay.textContent);
+    prevDisplay.textContent = "";
+    currentDisplay.textContent = operate(prevOperand, currentOperand, currentOperator);
+  }
+});
