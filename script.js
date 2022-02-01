@@ -23,7 +23,8 @@ function clearAll() {
 }
 //function to display numbers
 function updateDisplay() {
-  if(this.textContent === '.' && currentDisplay.textContent.includes('.')) {
+  // can't enter more than 1 decimal
+  if (this.textContent === "." && currentDisplay.textContent.includes(".")) {
     return;
   }
   currentDisplay.textContent += this.textContent.toString();
@@ -50,20 +51,30 @@ const prevDisplay = document.querySelector("#prevDisplay");
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
 const clearBtn = document.querySelector("#clear");
-const equalBtn = document.querySelector('.equal');
-const decimalBtn = document.querySelector('#decimal');
+const equalBtn = document.querySelector(".equal");
+const decimalBtn = document.querySelector("#decimal");
+const deleteBtn = document.querySelector('#delete');
 
 clearBtn.addEventListener("click", clearAll);
 digits.forEach((digit) => digit.addEventListener("click", updateDisplay));
 operators.forEach((operator) =>
   operator.addEventListener("click", clickOperator)
 );
-equalBtn.addEventListener('click', () => {
-  if(prevDisplay.textContent !== '' && currentDisplay.textContent !== '' && currentOperator!== null ) {
+equalBtn.addEventListener("click", () => {
+  if (
+    prevDisplay.textContent !== "" &&
+    currentDisplay.textContent !== "" &&
+    currentOperator !== null
+  ) {
     prevOperand = parseFloat(prevDisplay.textContent);
     currentOperand = parseFloat(currentDisplay.textContent);
     prevDisplay.textContent = "";
-    currentDisplay.textContent = operate(prevOperand, currentOperand, currentOperator);
+    currentDisplay.textContent = operate(
+      prevOperand,
+      currentOperand,
+      currentOperator
+    );
   }
 });
-decimalBtn.addEventListener('click', updateDisplay);
+decimalBtn.addEventListener("click", updateDisplay);
+deleteBtn.addEventListener('click', clearOne);
