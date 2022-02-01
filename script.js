@@ -23,6 +23,9 @@ function clearAll() {
 }
 //function to display numbers
 function updateDisplay() {
+  if(this.textContent === '.' && currentDisplay.textContent.includes('.')) {
+    return;
+  }
   currentDisplay.textContent += this.textContent.toString();
 }
 //function to run when any operator is clicked
@@ -47,7 +50,8 @@ const prevDisplay = document.querySelector("#prevDisplay");
 const digits = document.querySelectorAll(".digit");
 const operators = document.querySelectorAll(".operator");
 const clearBtn = document.querySelector("#clear");
-const equalBtn = document.querySelector('.equal') 
+const equalBtn = document.querySelector('.equal');
+const decimalBtn = document.querySelector('#decimal');
 
 clearBtn.addEventListener("click", clearAll);
 digits.forEach((digit) => digit.addEventListener("click", updateDisplay));
@@ -62,3 +66,4 @@ equalBtn.addEventListener('click', () => {
     currentDisplay.textContent = operate(prevOperand, currentOperand, currentOperator);
   }
 });
+decimalBtn.addEventListener('click', updateDisplay);
