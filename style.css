@@ -13,14 +13,19 @@ body {
 }
 
 button {
-    height: 80px;
-    width: 70px;
+    height: 70px;
+    width: 80px;
     font-size: larger;
 }
 
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
 #calculator {
     border: 3px solid black;
-    width: fit-content;
+    width: 370px;
     height: fit-content;
     padding: 10px;
     background-color: rgb(238, 248, 250);

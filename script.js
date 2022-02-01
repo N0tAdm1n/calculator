@@ -1,6 +1,6 @@
 let firstOperand = null;
 let secondOperand = null;
-let currentOperator;
+let currentOperator = null;
 
 function add(a, b) {
   return a + b;
@@ -46,32 +46,40 @@ digits.forEach((digit) => digit.addEventListener("click", displayToScreen));
 const display = document.querySelector("#display");
 
 const clear = document.querySelector("#clear");
-clear.addEventListener("click", clearDisplay);
+clear.addEventListener("click", () => {
+  firstOperand = null;
+  clearDisplay();
+});
 
 // function runs when an operator is pressed
+// function clickOperator() {
+//   if (firstOperand === null) {
+//     firstOperand = Number(display.textContent);
+//   } else if (secondOperand === null) {
+//     secondOperand = Number(display.textContent);
+//   } else {
+//     // firstOperand = secondOperand;
+//     secondOperand = Number(display.textContent);
+//   }
+//   if (this.textContent !== "=") currentOperator = this.textContent;
+//   clearDisplay();
+// }
+
 function clickOperator() {
-  if (firstOperand === null) {
-    firstOperand = Number(display.textContent);
-  } else if (secondOperand === null) {
-    secondOperand = Number(display.textContent);
-  } else {
-    // firstOperand = secondOperand;
-    secondOperand = Number(display.textContent);
-  }
-  if (this.textContent !== "=") currentOperator = this.textContent;
+  firstOperand = Number(display.textContent);
+
+  currentOperator = this.textContent;
+  
   clearDisplay();
 }
-// function to get second operand
-// function getSecondOperand() {
-//     secondOperand = Number(display.textContent);
-// }
+
 const operators = document.querySelectorAll(".operator");
 operators.forEach((operator) =>
   operator.addEventListener("click", clickOperator)
 );
 // function to display result
 function displayResult() {
-  display.textContent = operate(firstOperand, secondOperand, currentOperator);
+  display.textContent = `${operate(firstOperand, Number(display.textContent), currentOperator)}`;
   firstOperand = Number(display.textContent);
 }
 const equalBtn = document.querySelector(".equal");
