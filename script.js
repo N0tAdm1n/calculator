@@ -51,7 +51,6 @@ clear.addEventListener("click", () => {
   clearDisplay();
 });
 
-// function runs when an operator is pressed
 // function clickOperator() {
 //   if (firstOperand === null) {
 //     firstOperand = Number(display.textContent);
@@ -65,21 +64,24 @@ clear.addEventListener("click", () => {
 //   clearDisplay();
 // }
 
+// function runs when an operator is pressed
 function clickOperator() {
   firstOperand = Number(display.textContent);
 
   currentOperator = this.textContent;
-  
+
   clearDisplay();
 }
 
 const operators = document.querySelectorAll(".operator");
-operators.forEach((operator) =>
-  operator.addEventListener("click", clickOperator)
-);
+operators.forEach((operator) => operator.addEventListener("click", clickOperator));
 // function to display result
 function displayResult() {
-  display.textContent = `${operate(firstOperand, Number(display.textContent), currentOperator)}`;
+  display.textContent = `${operate(
+    firstOperand,
+    Number(display.textContent),
+    currentOperator
+  )}`;
   firstOperand = Number(display.textContent);
 }
 const equalBtn = document.querySelector(".equal");
