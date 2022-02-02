@@ -18,7 +18,7 @@ function operate(a, b, operator) {
       break;
   }
   if(result === Infinity || result === -Infinity || isNaN(result)) return "ERROR";
-  return result;
+  return Number(result.toFixed(3));
 }
 //function to clear the displays
 function clearAll() {
