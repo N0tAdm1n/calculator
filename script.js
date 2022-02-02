@@ -17,7 +17,7 @@ function operate(a, b, operator) {
       result =  a / b;
       break;
   }
-  if(result === "Infinity" || result === "-Infinity") return "ERROR";
+  if(result === Infinity || result === -Infinity || isNaN(result)) return "ERROR";
   return result;
 }
 //function to clear the displays
@@ -29,10 +29,12 @@ function clearAll() {
   prevOperand = null;
   currentOperator = null;
 }
+
 //function for backspace
 function clearOne() {
   currentDisplay.textContent = currentDisplay.textContent.slice(0, -1);
 }
+
 //function to display numbers
 function updateDisplay() {
   // can't enter more than 1 decimal
@@ -41,8 +43,11 @@ function updateDisplay() {
   }
   currentDisplay.textContent += this.textContent.toString();
 }
+
 //function to run when any operator is clicked
 function clickOperator() {
+  // don't accept an operaot if both displays are empty
+  if(prevDisplay.textContent === "" && currentDisplay.textContent === "") return;
   prevOperand = parseFloat(prevDisplay.textContent);
   currentOperand = parseFloat(currentDisplay.textContent);
   if (currentDisplay.textContent === "") {
