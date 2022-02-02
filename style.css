@@ -59,6 +59,10 @@ button {
   justify-content: flex-end;
 }
 
+#operDisplay {
+  font-size: larger;
+}
+
 #currentDisplay {
     height: 40px;
 }
