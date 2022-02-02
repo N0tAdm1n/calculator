@@ -20,6 +20,12 @@ button {
   background-color: #A9E5BBFF;
   border-radius: 10px;
   box-shadow: 20px;
+  padding: 2px
+}
+
+img {
+  height: auto;
+  width: 60px;
 }
 
 .row {
