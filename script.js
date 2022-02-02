@@ -42,6 +42,7 @@ function updateDisplay() {
     return;
   }
   currentDisplay.textContent += this.textContent.toString();
+  if(currentDisplay.textContent.length > 15) shrinkFont();
 }
 
 //function to run when any operator is clicked
@@ -70,6 +71,10 @@ function clickOperator() {
   currentDisplay.textContent = "";
 }
 
+//function to shrink the font of current display if result becomes to long
+function shrinkFont() {
+    currentDisplay.style.fontSize = 'large';
+}
 const currentDisplay = document.querySelector("#currentDisplay");
 const prevDisplay = document.querySelector("#prevDisplay");
 const operDisplay = document.querySelector("#operDisplay");
@@ -100,6 +105,9 @@ equalBtn.addEventListener("click", () => {
       currentOperand,
       currentOperator
     );
+    if(currentDisplay.textContent.length > 15) {
+      shrinkFont();
+    }
   }
 });
 decimalBtn.addEventListener("click", updateDisplay);
