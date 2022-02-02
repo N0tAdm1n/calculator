@@ -25,7 +25,8 @@ button {
   background-color: #A9E5BBFF;
   border-radius: 10px;
   box-shadow: 20px;
-  padding: 2px
+  padding: 2px;
+  font-family: 'Balsamiq Sans', cursive, serif; 
 }
 
 img {
