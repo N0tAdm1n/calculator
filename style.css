@@ -54,6 +54,11 @@ button {
     height: 25px;
 }
 
+#topDisplay {
+  display: flex;
+  justify-content: flex-end;
+}
+
 #currentDisplay {
     height: 40px;
 }
