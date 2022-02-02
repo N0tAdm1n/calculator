@@ -90,9 +90,11 @@ const signChangeBtn = document.querySelector("#signChange");
 
 clearBtn.addEventListener("click", clearAll);
 digits.forEach((digit) => digit.addEventListener("click", updateDisplay));
+
 operators.forEach((operator) =>
   operator.addEventListener("click", clickOperator)
 );
+
 equalBtn.addEventListener("click", () => {
   if (
     prevDisplay.textContent !== "" &&
@@ -113,8 +115,10 @@ equalBtn.addEventListener("click", () => {
     }
   }
 });
+
 decimalBtn.addEventListener("click", updateDisplay);
 deleteBtn.addEventListener("click", clearOne);
+
 signChangeBtn.addEventListener("click", () => {
   if (currentDisplay.textContent !== "") {
     currentDisplay.textContent = `${currentDisplay.textContent * -1}`;
