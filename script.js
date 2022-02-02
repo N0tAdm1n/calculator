@@ -8,16 +8,17 @@ function operate(a, b, operator) {
       result = a + b;
       break;
     case "-":
-      result =  a - b;
+      result = a - b;
       break;
     case "*":
       result = a * b;
       break;
     case "/":
-      result =  a / b;
+      result = a / b;
       break;
   }
-  if(result === Infinity || result === -Infinity || isNaN(result)) return "ERROR";
+  if (result === Infinity || result === -Infinity || isNaN(result))
+    return "ERROR";
   return Number(result.toFixed(3));
 }
 //function to clear the displays
@@ -42,13 +43,14 @@ function updateDisplay() {
     return;
   }
   currentDisplay.textContent += this.textContent.toString();
-  if(currentDisplay.textContent.length > 15) shrinkFont();
+  if (currentDisplay.textContent.length > 15) shrinkFont();
 }
 
 //function to run when any operator is clicked
 function clickOperator() {
   // don't accept an operaot if both displays are empty
-  if(prevDisplay.textContent === "" && currentDisplay.textContent === "") return;
+  if (prevDisplay.textContent === "" && currentDisplay.textContent === "")
+    return;
   prevOperand = parseFloat(prevDisplay.textContent);
   currentOperand = parseFloat(currentDisplay.textContent);
   if (currentDisplay.textContent === "") {
@@ -62,18 +64,18 @@ function clickOperator() {
       prevOperand,
       currentOperand,
       currentOperator
-      ).toString();
-    } else {
-      prevDisplay.textContent = currentDisplay.textContent;
-    }
-    currentOperator = this.textContent;
-    operDisplay.textContent = this.textContent;
+    ).toString();
+  } else {
+    prevDisplay.textContent = currentDisplay.textContent;
+  }
+  currentOperator = this.textContent;
+  operDisplay.textContent = this.textContent;
   currentDisplay.textContent = "";
 }
 
 //function to shrink the font of current display if result becomes to long
 function shrinkFont() {
-    currentDisplay.style.fontSize = 'large';
+  currentDisplay.style.fontSize = "large";
 }
 const currentDisplay = document.querySelector("#currentDisplay");
 const prevDisplay = document.querySelector("#prevDisplay");
@@ -84,6 +86,7 @@ const clearBtn = document.querySelector("#clear");
 const equalBtn = document.querySelector(".equal");
 const decimalBtn = document.querySelector("#decimal");
 const deleteBtn = document.querySelector("#delete");
+const signChangeBtn = document.querySelector("#signChange");
 
 clearBtn.addEventListener("click", clearAll);
 digits.forEach((digit) => digit.addEventListener("click", updateDisplay));
@@ -105,10 +108,15 @@ equalBtn.addEventListener("click", () => {
       currentOperand,
       currentOperator
     );
-    if(currentDisplay.textContent.length > 15) {
+    if (currentDisplay.textContent.length > 15) {
       shrinkFont();
     }
   }
 });
 decimalBtn.addEventListener("click", updateDisplay);
 deleteBtn.addEventListener("click", clearOne);
+signChangeBtn.addEventListener("click", () => {
+  if (currentDisplay.textContent !== "") {
+    currentDisplay.textContent = `${currentDisplay.textContent * -1}`;
+  }
+});
